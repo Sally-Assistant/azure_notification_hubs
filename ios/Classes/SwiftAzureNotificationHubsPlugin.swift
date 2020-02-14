@@ -3,7 +3,7 @@ import UIKit
 import UserNotifications
 
 @available(iOS 10.0, *)
-public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin {
+public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNotificationCenterDelegate {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "azure_notification_hubs", binaryMessenger: registrar.messenger())
     let instance = SwiftAzureNotificationHubsPlugin(channel: channel, registrar: registrar)
@@ -118,7 +118,7 @@ public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin {
    }
    */
   
-  public func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) -> Bool {
+   public func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) -> Bool {
     print("Received remote (silent) notification")
 
     showAlert("Received remote (silent) notification", withTitle: "Notification")

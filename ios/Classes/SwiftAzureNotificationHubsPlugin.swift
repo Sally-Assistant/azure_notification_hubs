@@ -1,16 +1,15 @@
 import Flutter
 import UIKit
 import UserNotifications
-import WindowsAzureMessaging
 
 @available(iOS 10.0, *)
-public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNotificationCenterDelegate {
+public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "azure_notification_hubs", binaryMessenger: registrar.messenger())
     let instance = SwiftAzureNotificationHubsPlugin(channel: channel, registrar: registrar)
     registrar.addMethodCallDelegate(instance, channel: channel)
     registrar.addApplicationDelegate(instance)
-    UNUserNotificationCenter.current().delegate = instance
+    //UNUserNotificationCenter.current().delegate = instance
   }
 
   //
@@ -60,7 +59,7 @@ public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNo
     NHInfoConnectionString = arguments[0] as! String
     NHInfoHubName = arguments[1] as! String
     tags = arguments[2] as! String
-    // ‚self.showAlert("\(NHInfoConnectionString)", withTitle: "Connection String")
+    self.showAlert("\(NHInfoConnectionString)", withTitle: "Connection String")
   }
 
   private func _handleRegister() {
@@ -90,7 +89,7 @@ public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNo
   //
   // AppDelegate events
   //
-  public func application(_: UIApplication,
+  public func application(_ application: UIApplication,
                           didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     let unparsedTags = tags
     let tagsArray = unparsedTags.split(separator: ",")
@@ -104,6 +103,12 @@ public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNo
         self.showAlert("Registered", withTitle: "Registration Status")
       }
     }
+  }
+  
+  public func application(_: UIApplication,
+  didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    print("Failed to register: \(error)")
+    self.showAlert("Registration failed with \(error)", withTitle: "Registration Status")
   }
 
   /*
@@ -120,7 +125,7 @@ public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNo
 
     completionHandler(UIBackgroundFetchResult.newData)
     
-    return true;
+    return true
   }
   
   public func userNotificationCenter(_ center: UNUserNotificationCenter,

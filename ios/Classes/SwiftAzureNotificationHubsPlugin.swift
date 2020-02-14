@@ -89,8 +89,7 @@ public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNo
   //
   // AppDelegate events
   //
-  public func application(_ application: UIApplication,
-                          didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+  public func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     let unparsedTags = tags
     let tagsArray = unparsedTags.split(separator: ",")
 
@@ -105,8 +104,7 @@ public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNo
     }
   }
   
-  public func application(_: UIApplication,
-  didFailToRegisterForRemoteNotificationsWithError error: Error) {
+  public func application(_: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
     print("Failed to register: \(error)")
     self.showAlert("Registration failed with \(error)", withTitle: "Registration Status")
   }

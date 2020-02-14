@@ -6,13 +6,13 @@ class AzureNotificationHubs {
   static const MethodChannel _channel =
       const MethodChannel('azure_notification_hubs');
 
-  static AzureNotificationHubs _allyVoiceSingleton;
+  static AzureNotificationHubs _sallyNotificationHubSingleton;
 
   factory AzureNotificationHubs() {
-    if (_allyVoiceSingleton == null) {
-      _allyVoiceSingleton = new AzureNotificationHubs._internal();
+    if (_sallyNotificationHubSingleton == null) {
+      _sallyNotificationHubSingleton = new AzureNotificationHubs._internal();
     }
-    return _allyVoiceSingleton;
+    return _sallyNotificationHubSingleton;
   }
 
   //

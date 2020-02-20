@@ -1,16 +1,19 @@
 # azure_notification_hubs_example
 
-Demonstrates how to use the azure_notification_hubs plugin.
+To run the example, first clone the repo
+```
+git clone https://github.com/benediktdreher/azure_notification_hubs.git
+```
+Then you must set the `NHInfoConnectionString` and `NHInfoHubName` according to the data in your Notification Hub.
+- `NHInfoHubName` is the name of your Notification Hub.
+- `NHInfoConnectionString` should be in the following format: 
+```
+Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<notificationHubKeyName>;SharedAccessKey=<notificationHubKey>
+```
+Finally, execute the following inside the example directory:
+```
+flutter run
+```
+You should be able to enter custom tags to register to upon which the app asks you for permission. You can then test send notifications to the device.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**Push Notifications only work on a physical device, the simulator will not suffice!**

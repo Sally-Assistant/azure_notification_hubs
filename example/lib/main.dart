@@ -10,20 +10,23 @@ class MyApp extends StatefulWidget {
 }
 
 // TODO: Fill in your Azure Notification Hub information
-const String NHInfoConnectionString = "TODO";
-const String NHInfoHubName = "TODO";
+const String NHInfoConnectionString = "TODO1";
+const String NHInfoHubName = "TODO1";
 
 const Color ORANGE = Color.fromARGB(255, 255, 127, 80);
 const Color WHITE = Color.fromARGB(255, 255, 255, 255);
+const Color RED = Color.fromARGB(255, 255, 0, 0);
 
 class _MyAppState extends State<MyApp> {
   AzureNotificationHubs azure;
   TextEditingController tagController = new TextEditingController();
+  bool valid;
 
   @override
   void initState() {
     super.initState();
     azure = new AzureNotificationHubs();
+    valid = NHInfoConnectionString != "TODO" && NHInfoHubName != "TODO";
   }
 
   void init() {
@@ -71,6 +74,18 @@ class _MyAppState extends State<MyApp> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                NHInfoConnectionString == "TODO"
+                    ? Text(
+                        "Please set NHInfoConnectionString in example/main.dart",
+                        style: TextStyle(color: RED, fontSize: 18),
+                      )
+                    : Container(),
+                NHInfoHubName == "TODO"
+                    ? Text(
+                        "Please set NHInfoHubName in example/main.dart",
+                        style: TextStyle(color: RED, fontSize: 18),
+                      )
+                    : Container(),
                 TextField(
                   controller: tagController,
                   decoration: InputDecoration(
@@ -85,7 +100,7 @@ class _MyAppState extends State<MyApp> {
                 Row(
                   children: <Widget>[
                     FlatButton(
-                        onPressed: onPressRegister,
+                        onPressed: valid ? onPressRegister : null,
                         color: ORANGE,
                         textColor: WHITE,
                         child: Text("Register")),
@@ -93,7 +108,7 @@ class _MyAppState extends State<MyApp> {
                       width: 10,
                     ),
                     FlatButton(
-                        onPressed: onPressRegister,
+                        onPressed: valid ? onPressRegister : null,
                         color: ORANGE,
                         textColor: WHITE,
                         child: Text("UnRegister"))

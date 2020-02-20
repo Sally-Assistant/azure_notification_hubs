@@ -9,7 +9,6 @@ public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNo
     let instance = SwiftAzureNotificationHubsPlugin(channel: channel, registrar: registrar)
     registrar.addMethodCallDelegate(instance, channel: channel)
     registrar.addApplicationDelegate(instance)
-    //UNUserNotificationCenter.current().delegate = instance
   }
 
   //
@@ -35,7 +34,6 @@ public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNo
   //
   // Public Functions
   //
-
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     switch call.method {
     case "init":
@@ -59,7 +57,7 @@ public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNo
     NHInfoConnectionString = arguments[0] as! String
     NHInfoHubName = arguments[1] as! String
     tags = arguments[2] as! String
-    self.showAlert("\(NHInfoConnectionString)", withTitle: "Connection String")
+    showAlert("\(NHInfoConnectionString)", withTitle: "Connection String")
   }
 
   private func _handleRegister() {
@@ -89,7 +87,7 @@ public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNo
   //
   // AppDelegate events
   //
-  public func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+  public func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     let unparsedTags = tags
     let tagsArray = unparsedTags.split(separator: ",")
 
@@ -103,30 +101,20 @@ public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNo
       }
     }
   }
-  
+
   public func application(_: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-    print("Failed to register: \(error)")
-    self.showAlert("Registration failed with \(error)", withTitle: "Registration Status")
+    print("Registration failed with \(error)")
   }
 
-  /*
-   static func application(_: UIApplication,
-                           didFailToRegisterForRemoteNotificationsWithError error: Error) {
-     print("Failed to register: \(error)")
-   }
-   */
-  
-   public func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) -> Bool {
+  public func application(_: UIApplication, didReceiveRemoteNotification _: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) -> Bool {
     print("Received remote (silent) notification")
 
-    showAlert("Received remote (silent) notification", withTitle: "Notification")
-
     completionHandler(UIBackgroundFetchResult.newData)
-    
+
     return true
   }
-  
-  public func userNotificationCenter(_ center: UNUserNotificationCenter,
+
+  public func userNotificationCenter(_: UNUserNotificationCenter,
                                      willPresent notification: UNNotification,
                                      withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
     print("Received notification while the application is in the foreground")
@@ -136,7 +124,7 @@ public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNo
     completionHandler([.sound, .badge])
   }
 
-  public func userNotificationCenter(_ center: UNUserNotificationCenter,
+  public func userNotificationCenter(_: UNUserNotificationCenter,
                                      didReceive response: UNNotificationResponse,
                                      withCompletionHandler completionHandler: @escaping () -> Void) {
     print("Received notification while the application is in the background")

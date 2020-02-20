@@ -57,7 +57,6 @@ public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNo
     NHInfoConnectionString = arguments[0] as! String
     NHInfoHubName = arguments[1] as! String
     tags = arguments[2] as! String
-    showAlert("\(NHInfoConnectionString)", withTitle: "Connection String")
   }
 
   private func _handleRegister() {

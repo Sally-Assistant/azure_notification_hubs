@@ -25,12 +25,6 @@ class AzureNotificationHubs {
   //
   // Public Functions
   //
-  Future getPlatformVersion() async {
-    print("AzureNotificationHubs: getPlatformVersion called");
-    var result = await _channel.invokeMethod('getPlatformVersion');
-    print(result);
-  }
-
   Future init(
       String infoConnectionString, String infoHubName, String tags) async {
     print("AzureNotificationHubs: init called");

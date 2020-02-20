@@ -1,0 +1,22 @@
+PODS:
+  - azure_notification_hubs (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+
+DEPENDENCIES:
+  - azure_notification_hubs (from `.symlinks/plugins/azure_notification_hubs/ios`)
+  - Flutter (from `Flutter`)
+
+EXTERNAL SOURCES:
+  azure_notification_hubs:
+    :path: ".symlinks/plugins/azure_notification_hubs/ios"
+  Flutter:
+    :path: Flutter
+
+SPEC CHECKSUMS:
+  azure_notification_hubs: 6220570fe62704338b8a4296d1c76400ee2da3b0
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+
+PODFILE CHECKSUM: 34c6debb8759c08b031ff60ef6200dc27355aaf8
+
+COCOAPODS: 1.8.4

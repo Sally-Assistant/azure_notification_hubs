@@ -64,7 +64,7 @@ public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNo
       .requestAuthorization(options: [.alert, .sound, .badge]) {
         granted, error in
         if error != nil {
-          self.showAlert("Error requesting for authorization.", withTitle: "Registration Status")
+          // self.showAlert("Error requesting for authorization.", withTitle: "Registration Status")
         }
         print("Permission granted: \(granted)")
         guard granted else { return }
@@ -76,9 +76,9 @@ public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNo
     let hub = getNotificationHub()
     hub.unregisterNative { error in
       if error != nil {
-        self.showAlert("Error unregistering for push: \(error.debugDescription)", withTitle: "Registration Status")
+        // self.showAlert("Error unregistering for push: \(error.debugDescription)", withTitle: "Registration Status")
       } else {
-        self.showAlert("Unregistered", withTitle: "Registration Status")
+        // self.showAlert("Unregistered", withTitle: "Registration Status")
       }
     }
   }
@@ -94,9 +94,9 @@ public class SwiftAzureNotificationHubsPlugin: NSObject, FlutterPlugin, UNUserNo
     hub.registerNative(withDeviceToken: deviceToken, tags: Set(tagsArray)) {
       error in
       if error != nil {
-        self.showAlert("Error registering for notifications: \(error.debugDescription)", withTitle: "Registration Status")
+        // self.showAlert("Error registering for notifications: \(error.debugDescription)", withTitle: "Registration Status")
       } else {
-        self.showAlert("Registered", withTitle: "Registration Status")
+        // self.showAlert("Registered", withTitle: "Registration Status")
       }
     }
   }

@@ -1,3 +1,3 @@
-## 1.0.0
+## 1.0.1
 
-* Able to send push notifications to physical iOS devices.
+* Updated README

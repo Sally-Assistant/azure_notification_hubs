@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'azure_notification_hubs'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Flutter support for using Azure Push Notifications in iOS apps.'
   s.description      = <<-DESC
   Flutter support for using Azure Push Notifications in iOS apps.

@@ -9,9 +9,9 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
   Flutter support for using Azure Push Notifications in iOS apps.
                        DESC
-  s.homepage         = 'https://aliru.de'
+  s.homepage         = 'https://sally-assistant.com/'
   s.license          = { :type => 'BSD', :file => '../LICENSE' }
-  s.author           = { 'Aliru UG' => 'benedikt.dreher@aliru.de' }
+  s.author           = { 'Sally Assistant' => 'benedikt.dreher@aliru.de' }
   s.source           = { :git => 'https://github.com/benediktdreher/azure_notification_hubs.git' }
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'

@@ -2,7 +2,7 @@
 
 To run the example, first clone the repo
 ```
-git clone https://github.com/benediktdreher/azure_notification_hubs.git
+git clone https://github.com/Sally-Assistant/azure_notification_hubs.git
 ```
 Then you must set the `NHInfoConnectionString` and `NHInfoHubName` according to the data in your Notification Hub.
 - `NHInfoHubName` is the name of your Notification Hub.

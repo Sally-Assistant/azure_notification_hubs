@@ -1,7 +1,7 @@
 name: azure_notification_hubs
 description: Flutter support for using Azure Push Notifications in iOS apps.
-version: 1.0.1
-homepage: https://github.com/benediktdreher/azure_notification_hubs
+version: 1.0.2
+homepage: https://github.com/Sally-Assistant/azure_notification_hubs.git
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
